@@ -1,6 +1,6 @@
 ---
 name: html-to-android (ko)
-description: Figma 디자인 노드 또는 HTML/CSS 프로토타입을 관용적인 Jetpack Compose 코드로 변환. 트리거는 영어판(SKILL.md) 기준이며, 이 파일은 사람이 읽는 한글 참고본.
+description: Figma 디자인 노드 또는 HTML/CSS 프로토타입을 관용적인 Jetpack Compose 코드로 변환. 트리거는 영어판(html-to-android.md) 기준이며, 이 파일은 사람이 읽는 한글 참고본.
 ---
 
 # Figma/HTML → Jetpack Compose
