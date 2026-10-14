@@ -62,5 +62,16 @@ Ambiguous pattern? Check the screenshot; still unclear → ask, don't guess.
 - Compare same-scale crops, not whole images; keep the long edge ≤ ~1568px when reading (larger images are downscaled). JVM renders differ from devices (fonts, shadows): evidence, not pass/fail.
 - No leftover asset URLs; no hardcoded values where a token exists; only the requested scope. HTML: every row of the Step 2 table implemented or listed as an open question.
 
+## Figma MCP invariants
+
+These rules apply only to the Figma branch.
+
+- Before `get_design_context`, load the available `figma-design-to-code` skill. Treat its React/Tailwind output as a design reference, never as Compose source to paste.
+- Start with `get_design_context` for the exact node. It includes a screenshot by default; call `get_screenshot` separately only when a different node or higher-resolution visual check is needed.
+- If the response is truncated or the screen is structurally unclear, use `get_metadata` to select smaller logical nodes, then fetch those nodes individually. Do not use a guessed node ID or force a huge response.
+- Use `get_variable_defs` only when variables/styles are absent or ambiguous in the design-context response, or when an explicit token mapping is required. Map them to existing Compose theme tokens first.
+- Figma image and SVG assets take priority. Download supplied asset URLs before they expire and add them through the project's Android resource or image-loading convention. A `localhost` URL from web-oriented Figma output is not an Android runtime `src`; do not leave it in Compose code.
+- When Figma supplies an icon or image, reuse it instead of adding an icon dependency or substituting a placeholder. Generate an image only when no suitable source asset exists and the user has approved any Figma AI credit use.
+
 ## Notes
 Scope: layout, styling, visual state variants (e.g. selected/expanded). Business logic, ViewModel, navigation, data fetching are separate. The Figma path was checked on real nodes (bottom sheet, list, home screen) at the decision level only — nothing compiled or rendered; the HTML path and the Step 6 capture flow are untested. History: `references/changelog.md`.
