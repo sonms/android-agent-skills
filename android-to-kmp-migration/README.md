@@ -8,8 +8,7 @@ Android 전용 코드(모듈 또는 앱 전체)를 Kotlin Multiplatform(KMP)으�
 |---|---|
 | `android-to-kmp-migration.md` | 에이전트가 실제로 로드하는 원본 SKILL.md (영문) |
 | `android-to-kmp-migration.ko.md` | 사람이 검토·수정할 때 참고하는 한국어 번역본 |
-
-**원본(영문)을 고치면 번역본도 같이 갱신해야 합니다.** 번역본은 에이전트에게 직접 로드되지 않는, 검토용 사본입니다.
+| `new-kmp-module.sh` | 새 KMP 모듈 골격(commonMain/androidMain/iosMain + build.gradle.kts) 생성 스크립트. 기존 모듈 레트로핏이나 settings.gradle.kts 수정은 하지 않음 — 그건 포맷이 매번 달라 스킬 0번 단계에서 직접 처리 |
 
 ## 설계 배경
 
@@ -22,6 +21,6 @@ Android 전용 코드(모듈 또는 앱 전체)를 Kotlin Multiplatform(KMP)으�
 
 ## 아직 안 정해진 것 / 다음 단계
 
-- 실제 프로젝트에 적용하면서 `Field notes` 섹션에 발견 사항을 쌓아나갈 것. 특히 Unity 오버레이와 Compose UI 사이의 통신 경계처럼, 현재 버킷 분류(`EXPECT_ACTUAL` vs `ANDROID_ONLY`) 어디에도 깔끔히 안 맞을 수 있는 케이스를 우선 확인.
+- 실제 프로젝트([[meong]])에 적용하면서 `Field notes` 섹션에 발견 사항을 쌓아나갈 것. 특히 Unity 오버레이와 Compose UI 사이의 통신 경계처럼, 현재 버킷 분류(`EXPECT_ACTUAL` vs `ANDROID_ONLY`) 어디에도 깔끔히 안 맞을 수 있는 케이스를 우선 확인.
 - SWAP형 항목에서 라우팅할 실제 커뮤니티 스킬 이름은 하드코딩하지 않음 — 적용 시점에 탐색해서 결정.
 - 0번의 AGP/Kotlin/Gradle 버전 임계값은 2026년 3분기 기준 스냅샷 — 실제 적용 시점마다 공식 릴리스 노트로 재확인 필요.
